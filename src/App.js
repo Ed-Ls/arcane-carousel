@@ -1,17 +1,24 @@
 import "./App.css";
 import { useState } from "react";
 import Slider from "react-slick";
+import Details from "./Details";
+import persoContent from "./data";
 
 import vi from "./assets/vi-arcane.png";
 import jinx from "./assets/jinx-arcane.png";
 import caitlyn from "./assets/caitlyn-arcane.png";
-import ziko from "./assets/ziko-arcane.png";
+import jayce from "./assets/jayce-arcane.png";
 
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import Footer from "./Footer";
 
-const images = [jinx, caitlyn, ziko, vi];
+const images = [jinx, caitlyn, jayce, vi];
 
 function App() {
+  const [imgIndex, setImgIndex] = useState(0);
+
+  let content = persoContent.filter((perso) => perso.id === imgIndex).pop();
+
   const NextArrow = ({ onClick }) => {
     return (
       <div className="arrow next" onClick={onClick}>
@@ -27,8 +34,6 @@ function App() {
       </div>
     );
   };
-
-  const [imgIndex, setImgIndex] = useState(0);
 
   const settings = {
     infinite: true,
@@ -46,8 +51,19 @@ function App() {
 
   return (
     <div className="App">
-      {" "}
-      <div className="other">Hello</div>
+      <Details
+        key={imgIndex}
+        name={content.name}
+        surname={content.surname}
+        resume={content.resume}
+        health={content.skills.health}
+        mana={content.skills.mana}
+        armor={content.skills.armor}
+        attack={content.skills.attack}
+      />
+
+      <div className={`other-decoration ${content.color}`}></div>
+
       <Slider {...settings}>
         {images.map((img, index) => {
           return (
@@ -57,6 +73,7 @@ function App() {
           );
         })}
       </Slider>
+      <Footer />
     </div>
   );
 }
