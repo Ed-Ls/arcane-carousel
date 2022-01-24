@@ -43,8 +43,9 @@
   border: solid 3px #785a27;
   color: white;
   top: 1.5rem;
-  left: 3rem;
+  left: 1rem;
   font-family: "Arcane", "Gill Sans", Courier;
+  opacity: 0;
 }
 
 h1 {

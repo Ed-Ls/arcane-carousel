@@ -1,8 +1,11 @@
 import "./App.css";
 import { useState } from "react";
 import Slider from "react-slick";
+import { motion } from "framer-motion";
+
 import Details from "./Details";
 import persoContent from "./data";
+import Footer from "./Footer";
 
 import vi from "./assets/vi-arcane.png";
 import jinx from "./assets/jinx-arcane.png";
@@ -10,7 +13,6 @@ import caitlyn from "./assets/caitlyn-arcane.png";
 import jayce from "./assets/jayce-arcane.png";
 
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import Footer from "./Footer";
 
 const images = [jinx, caitlyn, jayce, vi];
 
@@ -62,7 +64,12 @@ function App() {
         attack={content.skills.attack}
       />
 
-      <div className={`other-decoration ${content.color}`}></div>
+      <motion.div
+        key={content.name}
+        animate={{ x: 35, opacity: 1 }}
+        transition={{ ease: "easeOut", delay: 0.2 }}
+        className={`other-decoration ${content.color}`}
+      ></motion.div>
 
       <Slider {...settings}>
         {images.map((img, index) => {
