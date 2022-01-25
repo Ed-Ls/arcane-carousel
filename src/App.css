@@ -158,7 +158,7 @@ span {
 }
 
 .prev {
-  left: 0%;
+  left: 5%;
   top: 50%;
 }
 
@@ -174,4 +174,22 @@ footer p {
   position: absolute;
   right: 0;
   bottom: 0.5rem;
+}
+
+@media screen and (max-width: 1300px) {
+  .App {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .other-decoration {
+    top: 35rem;
+    left: 8rem;
+  }
+
+  .slick-slider {
+    width: 80%;
+    margin: 2rem auto 8rem auto;
+    height: 400px;
+  }
 }
